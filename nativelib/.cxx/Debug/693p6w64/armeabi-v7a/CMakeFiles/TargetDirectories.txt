@@ -1,0 +1,3 @@
+/Users/toby-computer/RnDevelop/toby-coding/maven-test/nativelib/.cxx/Debug/693p6w64/armeabi-v7a/CMakeFiles/nativelib.dir
+/Users/toby-computer/RnDevelop/toby-coding/maven-test/nativelib/.cxx/Debug/693p6w64/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/toby-computer/RnDevelop/toby-coding/maven-test/nativelib/.cxx/Debug/693p6w64/armeabi-v7a/CMakeFiles/rebuild_cache.dir

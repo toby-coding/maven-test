@@ -1,0 +1,3 @@
+# ninja log v5
+0	498	1714977705446528088	CMakeFiles/nativelib.dir/nativelib.cpp.o	d540535184e70de3
+499	620	1714977705548513842	/Users/toby-computer/RnDevelop/toby-coding/maven-test/nativelib/build/intermediates/cxx/RelWithDebInfo/1ho1y4c4/obj/arm64-v8a/libnativelib.so	2b39560d395e888d

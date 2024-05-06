@@ -1,0 +1,78 @@
+
+
+plugins {
+    id 'com.android.library'
+}
+
+apply plugin: 'maven-publish' // Gradle7.0版本以上支持的,7.0以下用maven
+
+
+// 定义一个任务，用于删除AAR文件
+task deleteAar(type: Delete) {
+    delete 'build/outputs/aar/nativelib-release.aar'
+    delete 'build/outputs/aar/nativelib-debug.aar'
+}
+
+task cleanAssemble(type: GradleBuild) {
+    tasks = ['deleteAar', 'assemble']
+}
+
+publishToMavenLocal.dependsOn cleanAssemble
+
+afterEvaluate {
+    publishing {
+        //发布配置
+        publications {
+            myPublication(MavenPublication) {
+                groupId "com.lib.native"
+                artifactId "native-lib-test"
+                version VERSION_NAME
+                artifact "build/outputs/aar/nativelib-release.aar"
+            }
+        }
+    }
+}
+
+android {
+    namespace 'com.example.nativelib'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation project(':mylibrary') // import mylibrary
+    testImplementation 'junit:junit:4.14-SNAPSHOT'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
