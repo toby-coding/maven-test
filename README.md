@@ -12,5 +12,9 @@ Test Step:
 1. Gradle->My Application/myLibrary/Tasks/publishing/publishToMavenLocal && My 
    Application/nativelib/Tasks/publishing/publishToMavenLocal
 2. publishTomavenLocal
-3. 
+3. You can find aar in YOUR_LOCAL_MAVEN_DIR/com/lib/android/android-lib-test/0.1.1 && 
+   YOUR_LOCAL_MAVEN_DIR/com/lib/native/native-lib-test/0.1.1
 
+Test use of arr you can checkout to branch of maven-import
+
+ 
