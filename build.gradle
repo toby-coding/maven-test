@@ -1,0 +1,24 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+// 依赖URL之前于settings.gradle定义的是整体的仓库位置，而这里可以视为定义具体的依赖位置
+// plugins定义项目中所有模块共用的 Gradle 依赖项
+// apply false 不可以用于子模块的build.gradle
+buildscript{
+//    dependencies {
+//        classpath("com.facebook.react:react-native-gradle-plugin") // settings.gradle中引入的插件模块
+//    }
+}
+
+plugins {
+    id 'com.android.application' version '8.1.1' apply false // 引入插件，同apply plugin: 'com.android.application'
+    id 'com.android.library' version '8.1.1' apply false
+}
+
+// 1、父项目下的 build.gradle： 全局配置，配置 Gradle 版本和 Maven 依赖；
+// 2、父项目下的setting.gradle 文件： 全局配置，添加编译的所有模块；
+// 3、父项目下的gradle 文件夹： 配置 gradel-wrapper；
+// 4、子项目下的 build.gralde文件： app 打包和签名配置，及模块的依赖；
+// 5、gradlew 和 gradlew.bat文件： Gradle 启动脚本文件
+// 6、gradle.projects 文件： 项目范围的梯度设置，编译内存，Gradle 并发性等设置。
+// 7、.gradle 文件夹：编译时的缓存文件夹这几个部分各自负责的功能都不尽相同。下面我们来看下它们具体的功能。
+// 详细分析见：https://blog.csdn.net/gelingxian/article/details/122813311

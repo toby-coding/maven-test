@@ -1,0 +1,38 @@
+// 全局配置，添加编译的所有模块
+pluginManagement {
+    repositories {//插件运行，依赖的仓库
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+// 指定Gradle需要的用来搜索或下载【依赖dependency】的代码库
+dependencyResolutionManagement {
+    // 然而，为了配置一些模块特定的依赖，你需要在每一个模块的模块级build.gradle文件中进行配置说明
+    // PREFER_PROJECT : 解析依赖库时, 优先使用本地仓库, 本地仓库没有该依赖, 则使用远程仓库
+    // FAIL_ON_PROJECT_REPOS : 解析依赖库时, 强行使用远程仓库, 不管本地仓库有没有该依赖库
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        // 以下是AS默认configure的repositories
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "My Application" // 工程名称
+include ':app' // 引入app模块
+//includeBuild('../node_modules/@react-native/gradle-plugin') // 引入外部依赖模块
+//apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
+//applyNativeModulesSettingsGradle(settings)
+
+
+//步骤1：主项目的settings.gradle文件添加如下代码
+// includeBuild('../APPB') {
+//     dependencySubstitution {
+//         substitute module('com.beason.moduleb:ModuleB') using project(':ModuleB')
+//     }
+// }
+// 步骤2：再在需要引入Moduel地方，引入即可
+// implementation "com.beason.moduleb:ModuleB"
+include ':nativelib'
+include ':mylibrary'

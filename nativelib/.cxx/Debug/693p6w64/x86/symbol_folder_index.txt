@@ -1,0 +1,1 @@
+/Users/toby-computer/RnDevelop/toby-coding/maven-test/nativelib/build/intermediates/cxx/Debug/693p6w64/obj/x86
